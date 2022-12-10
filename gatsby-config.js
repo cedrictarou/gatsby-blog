@@ -12,7 +12,9 @@ module.exports = {
     title: `ESSENTIALS`,
     description: `美味しい食材と食事を探求するサイト`,
     lang: `ja`,
-    // siteUrl:``
+    siteUrl: `https://symphonious-pony-ffbffb.netlify.app`,
+    locale: `ja_JP`,
+    fbappid: `xxxxxxxxxxxxxxx`,
   },
   plugins: [
     `gatsby-transformer-sharp`,
@@ -25,5 +27,18 @@ module.exports = {
       },
     },
     `gatsby-plugin-react-helmet`,
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `ESSENTIALS エッセンシャルズ`,
+        short_name: `ESSENTIALS`,
+        start_url: `/`,
+        background_color: `#ffffff`,
+        theme_color: `#477294`,
+        display: `standalone`,
+        icon: `src/images/icon.png`,
+      },
+    },
+    `gatsby-plugin-offline`,
   ],
 };
