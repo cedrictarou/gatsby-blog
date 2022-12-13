@@ -1,3 +1,8 @@
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+});
+// import * as dotenv from "dotenv";
+// dotenv.config({ path: `.env.${process.env.NODE_ENV}` });
 /**
  * Configure your Gatsby site with this file.
  *
@@ -7,6 +12,7 @@
 /**
  * @type {import('gatsby').GatsbyConfig}
  */
+
 module.exports = {
   siteMetadata: {
     title: `ESSENTIALS`,
@@ -17,8 +23,9 @@ module.exports = {
     fbappid: `xxxxxxxxxxxxxxx`,
   },
   plugins: [
-    `gatsby-transformer-sharp`,
+    `gatsby-plugin-image`,
     `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -40,5 +47,13 @@ module.exports = {
       },
     },
     `gatsby-plugin-offline`,
+    {
+      resolve: `gatsby-source-contentful`,
+      options: {
+        spaceId: process.env.CONTENTFUL_SPACE_ID,
+        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+        host: process.env.CONTENTFUL_HOST,
+      },
+    },
   ],
 };

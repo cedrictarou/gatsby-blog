@@ -1,6 +1,6 @@
 import React from "react";
 import { graphql, useStaticQuery } from "gatsby";
-import Img from "gatsby-image";
+import { GatsbyImage } from "gatsby-plugin-image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faTwitter,
@@ -14,9 +14,7 @@ export default () => {
     query {
       pattern: file(relativePath: { eq: "pattern.jpg" }) {
         childImageSharp {
-          fluid(maxWidth: 1920, quality: 90) {
-            ...GatsbyImageSharpFluid_withWebp
-          }
+          gatsbyImageData(quality: 90, layout: FULL_WIDTH)
         }
       }
     }
@@ -63,8 +61,9 @@ export default () => {
         </ul>
       </div>
       <div className='back'>
-        <Img
-          fluid={data.pattern.childImageSharp.fluid}
+        <GatsbyImage
+          image={data.pattern.childImageSharp.gatsbyImageData}
+          alt=''
           style={{ height: "100%" }}
         />
       </div>
