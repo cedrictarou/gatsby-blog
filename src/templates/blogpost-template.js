@@ -36,7 +36,7 @@ const options = {
   },
 };
 
-export default ({ data, pageContext, location }) => (
+const BlogpostTemp = ({ data, pageContext, location }) => (
   <Layout>
     <Seo
       pagetitle={data.contentfulBlogPost.title}
@@ -145,3 +145,5 @@ export const query = graphql`
     }
   }
 `;
+
+export default BlogpostTemp;

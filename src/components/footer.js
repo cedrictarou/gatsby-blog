@@ -9,7 +9,7 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import { Link } from "gatsby";
 
-export default () => {
+const Footer = () => {
   const data = useStaticQuery(graphql`
     query {
       pattern: file(relativePath: { eq: "pattern.jpg" }) {
@@ -63,10 +63,12 @@ export default () => {
       <div className='back'>
         <GatsbyImage
           image={data.pattern.childImageSharp.gatsbyImageData}
-          alt=''
+          alt='footer'
           style={{ height: "100%" }}
         />
       </div>
     </footer>
   );
 };
+
+export default Footer;

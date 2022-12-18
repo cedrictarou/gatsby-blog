@@ -2,15 +2,15 @@ import * as React from "react";
 import { graphql } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
 import Layout from "../components/layout";
-import SEO from "../components/seo";
+import Seo from "../components/seo";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUtensils, faCheckSquare } from "@fortawesome/free-solid-svg-icons";
 
-export default function About({ data, location }) {
+const About = ({ data, location }) => {
   return (
     <Layout>
-      <SEO
+      <Seo
         pagetitle='ESSENTIALSについて'
         pagedesc='食べ物についての情報を発信しているサイトです。'
         pagepath={location.pathname}
@@ -23,7 +23,7 @@ export default function About({ data, location }) {
           <figure>
             <GatsbyImage
               image={data.about.childImageSharp.gatsbyImageData}
-              alt=' ブルーベリー＆ヨーグルト'
+              alt='ブルーベリー＆ヨーグルト'
             />
           </figure>
         </div>
@@ -68,7 +68,7 @@ export default function About({ data, location }) {
       </div>
     </Layout>
   );
-}
+};
 export const query = graphql`
   query {
     about: file(relativePath: { eq: "about.jpg" }) {
@@ -83,3 +83,4 @@ export const query = graphql`
     }
   }
 `;
+export default About;

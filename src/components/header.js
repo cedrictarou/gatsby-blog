@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "gatsby";
 
-export default () => (
+const Header = () => (
   <header className='header'>
     <div className='container'>
       <div className='site'>
@@ -24,8 +24,12 @@ export default () => (
           <li>
             <Link to={`/about/`}>ABOUT</Link>
           </li>
+          <li>
+            <Link to={`/blog/`}>BLOG</Link>
+          </li>
         </ul>
       </nav>
     </div>
   </header>
 );
+export default Header;

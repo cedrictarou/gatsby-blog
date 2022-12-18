@@ -1,10 +1,10 @@
 import * as React from "react";
-import { graphql } from "gatsby";
+import { graphql, Link } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
 import Layout from "../components/layout";
 import Seo from "../components/seo";
 
-export default function Home({ data }) {
+const Home = ({ data }) => {
   return (
     <Layout>
       <Seo />
@@ -12,8 +12,8 @@ export default function Home({ data }) {
         <figure>
           <GatsbyImage
             image={data.hero.childImageSharp.gatsbyImageData}
+            alt='aaa'
             style={{ height: "100%" }}
-            alt=''
           />
         </figure>
         <div className='catch'>
@@ -47,7 +47,7 @@ export default function Home({ data }) {
               <figure>
                 <GatsbyImage
                   image={data.fruit.childImageSharp.gatsbyImageData}
-                  alt=''
+                  alt='aaaa'
                 />
               </figure>
               <h3>フルーツ</h3>
@@ -62,7 +62,7 @@ export default function Home({ data }) {
               <figure>
                 <GatsbyImage
                   image={data.grain.childImageSharp.gatsbyImageData}
-                  alt=''
+                  alt='aaaa'
                 />
               </figure>
               <h3>穀物</h3>
@@ -77,7 +77,7 @@ export default function Home({ data }) {
               <figure>
                 <GatsbyImage
                   image={data.beverage.childImageSharp.gatsbyImageData}
-                  alt=''
+                  alt='aaaa'
                 />
               </figure>
               <h3>飲み物</h3>
@@ -97,13 +97,35 @@ export default function Home({ data }) {
           <GatsbyImage
             image={data.berry.childImageSharp.gatsbyImageData}
             style={{ height: "100%" }}
-            alt=''
+            alt='aaaa'
           />
         </figure>
       </section>
+
+      <section>
+        <div className='container'>
+          <h2 className='sr-only'>RECENT POSTS</h2>
+          <div className='posts'>
+            {data.allContentfulBlogPost.edges.map(({ node }) => (
+              <article className='post' key={node.id}>
+                <Link to={`/blog/post/${node.slug}/`}>
+                  <figure>
+                    <GatsbyImage
+                      image={node.eyecatch.gatsbyImageData}
+                      style={{ height: "100%" }}
+                      alt={node.description}
+                    />
+                  </figure>
+                  <h3>{node.title}</h3>
+                </Link>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
     </Layout>
   );
-}
+};
 export const query = graphql`
   query {
     hero: file(relativePath: { eq: "hero.jpg" }) {
@@ -136,5 +158,19 @@ export const query = graphql`
         gatsbyImageData(quality: 90, layout: FULL_WIDTH)
       }
     }
+    allContentfulBlogPost(sort: { publishDate: DESC }, skip: 0, limit: 4) {
+      edges {
+        node {
+          title
+          id
+          eyecatch {
+            gatsbyImageData(layout: CONSTRAINED, width: 573)
+            description
+          }
+          slug
+        }
+      }
+    }
   }
 `;
+export default Home;

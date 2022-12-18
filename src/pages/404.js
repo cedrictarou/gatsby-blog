@@ -2,7 +2,7 @@ import React from "react";
 import SEO from "../components/seo";
 import Layout from "../components/layout";
 
-export default ({ location }) => (
+const NotFound = ({ location }) => (
   <div>
     <Layout>
       <SEO pagetitle='ページが見つかりません' pagepath={location.pathname} />
@@ -12,3 +12,4 @@ export default ({ location }) => (
     </Layout>
   </div>
 );
+export default NotFound;
