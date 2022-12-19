@@ -7,16 +7,16 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 
-const BlogTemp = ({ data, location, pageContext }) => (
+const CatTemp = ({ data, location, pageContext }) => (
   <Layout>
     <Seo
-      pagetitle='ブログ'
-      pagedesc='ESSENTIALSのブログです'
+      pagetitle={`CATEGORY: ${pageContext.catname}`}
+      pagedesc={`「 ${pageContext.catname}」カテゴリーの記事です`}
       patepath={location.pathname}
     />
     <section className='content bloglist'>
       <div className='container'>
-        <h1 className='bar'>RECENT POSTS</h1>
+        <h1 className='bar'>CATEGORY: {pageContext.catname}</h1>
         <div className='posts'>
           {data.allContentfulBlogPost.edges.map(({ node }) => (
             <article className='post' key={node.id}>
@@ -65,11 +65,12 @@ const BlogTemp = ({ data, location, pageContext }) => (
 );
 
 export const query = graphql`
-  query ($skip: Int!, $limit: Int!) {
+  query ($catid: String!, $skip: Int!, $limit: Int!) {
     allContentfulBlogPost(
       sort: { publishDate: DESC }
       skip: $skip
       limit: $limit
+      filter: { category: { elemMatch: { id: { eq: $catid } } } }
     ) {
       edges {
         node {
@@ -85,4 +86,4 @@ export const query = graphql`
     }
   }
 `;
-export default BlogTemp;
+export default CatTemp;
