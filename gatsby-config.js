@@ -1,13 +1,6 @@
 require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
 });
-// import * as dotenv from "dotenv";
-// dotenv.config({ path: `.env.${process.env.NODE_ENV}` });
-/**
- * Configure your Gatsby site with this file.
- *
- * See: https://www.gatsbyjs.com/docs/reference/config-files/gatsby-config/
- */
 
 /**
  * @type {import('gatsby').GatsbyConfig}
@@ -16,7 +9,7 @@ require("dotenv").config({
 module.exports = {
   siteMetadata: {
     title: `ESSENTIALS`,
-    description: `美味しい食材と食事を探求するサイト`,
+    description: `初心者によるプログラミングブログ`,
     lang: `ja`,
     siteUrl: `https://symphonious-pony-ffbffb.netlify.app`,
     locale: `ja_JP`,

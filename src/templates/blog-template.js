@@ -76,7 +76,7 @@ export const query = graphql`
           title
           id
           eyecatch {
-            gatsbyImageData(layout: CONSTRAINED, width: 500)
+            gatsbyImageData(layout: CONSTRAINED, width: 500, height: 200)
             description
           }
           slug

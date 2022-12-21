@@ -12,7 +12,7 @@ const Home = ({ data }) => {
         <figure>
           <GatsbyImage
             image={data.hero.childImageSharp.gatsbyImageData}
-            alt='aaa'
+            alt='食べ物'
             style={{ height: "100%" }}
           />
         </figure>
@@ -47,7 +47,7 @@ const Home = ({ data }) => {
               <figure>
                 <GatsbyImage
                   image={data.fruit.childImageSharp.gatsbyImageData}
-                  alt='aaaa'
+                  alt='フルーツ'
                 />
               </figure>
               <h3>フルーツ</h3>
@@ -62,7 +62,7 @@ const Home = ({ data }) => {
               <figure>
                 <GatsbyImage
                   image={data.grain.childImageSharp.gatsbyImageData}
-                  alt='aaaa'
+                  alt='穀物'
                 />
               </figure>
               <h3>穀物</h3>
@@ -77,7 +77,7 @@ const Home = ({ data }) => {
               <figure>
                 <GatsbyImage
                   image={data.beverage.childImageSharp.gatsbyImageData}
-                  alt='aaaa'
+                  alt='飲み物'
                 />
               </figure>
               <h3>飲み物</h3>
@@ -164,7 +164,7 @@ export const query = graphql`
           title
           id
           eyecatch {
-            gatsbyImageData(layout: CONSTRAINED, width: 573)
+            gatsbyImageData(layout: CONSTRAINED, width: 573, height: 220)
             description
           }
           slug

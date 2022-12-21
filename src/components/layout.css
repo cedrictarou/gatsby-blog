@@ -70,6 +70,13 @@ svg {
 }
 
 /* ヘッダー */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: #fff;
+  box-shadow: 0px 0px 15px -5px #777777;
+}
 .header .container {
   display: flex;
   flex-direction: column;
@@ -527,7 +534,7 @@ svg {
 }
 
 .posts img {
-  height: 150px;
+  /* height: 150px; */
   object-fit: cover;
 }
 .posts h3 {
@@ -541,7 +548,7 @@ svg {
   }
 
   .posts img {
-    height: 200px;
+    /* height: 200px; */
   }
 }
 
